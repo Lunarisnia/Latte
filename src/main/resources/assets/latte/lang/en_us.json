@@ -1,0 +1,13 @@
+{
+  "itemGroup.latte": "Example Mod Tab",
+  "block.latte.example_block": "Example Block",
+  "item.latte.example_item": "Example Item",
+
+  "latte.configuration.title": "Latte Configs",
+  "latte.configuration.section.latte.common.toml": "Latte Configs",
+  "latte.configuration.section.latte.common.toml.title": "Latte Configs",
+  "latte.configuration.items": "Item List",
+  "latte.configuration.logDirtBlock": "Log Dirt Block",
+  "latte.configuration.magicNumberIntroduction": "Magic Number Text",
+  "latte.configuration.magicNumber": "Magic Number"
+}
