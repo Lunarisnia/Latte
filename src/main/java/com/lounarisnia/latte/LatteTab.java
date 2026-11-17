@@ -4,7 +4,6 @@ import com.lounarisnia.latte.items.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -15,7 +14,7 @@ public class LatteTab {
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> LATTE_TAB_HOLDER =
 			LATTE_TAB.register("latte_tab", () -> CreativeModeTab.builder()
 					.title(Component.literal("Latte"))
-					.icon(Items.STONE::getDefaultInstance)
+					.icon(() -> ModItems.CAFE_LATTE_ITEM.get().getDefaultInstance())
 					.displayItems(((itemDisplayParameters, output) ->
 							output.accept(ModItems.CAFE_LATTE_ITEM)
 					))

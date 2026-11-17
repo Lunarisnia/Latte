@@ -32,6 +32,7 @@ public class Latte {
 		// Register the commonSetup method for modloading
 		modEventBus.addListener(this::commonSetup);
 
+		ModAttachments.register(modEventBus);
 		ModItems.register(modEventBus);
 		// Register the Deferred Register to the mod event bus so tabs get registered
 		LatteTab.register(modEventBus);
