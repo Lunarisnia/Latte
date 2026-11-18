@@ -1,5 +1,6 @@
 package com.lounarisnia.latte;
 
+import com.lounarisnia.latte.blocks.ModBlocks;
 import com.lounarisnia.latte.items.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -33,6 +34,7 @@ public class Latte {
 		modEventBus.addListener(this::commonSetup);
 
 		ModAttachments.register(modEventBus);
+		ModBlocks.register(modEventBus);
 		ModItems.register(modEventBus);
 		// Register the Deferred Register to the mod event bus so tabs get registered
 		LatteTab.register(modEventBus);

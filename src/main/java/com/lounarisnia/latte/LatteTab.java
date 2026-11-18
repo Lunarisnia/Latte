@@ -15,8 +15,10 @@ public class LatteTab {
 			LATTE_TAB.register("latte_tab", () -> CreativeModeTab.builder()
 					.title(Component.literal("Latte"))
 					.icon(() -> ModItems.CAFE_LATTE_ITEM.get().getDefaultInstance())
-					.displayItems(((itemDisplayParameters, output) ->
-							output.accept(ModItems.CAFE_LATTE_ITEM)
+					.displayItems(((itemDisplayParameters, output) -> {
+						output.accept(ModItems.CAFE_LATTE_ITEM);
+						output.accept(ModItems.COFFEE_MACHINE_ITEM);
+					}
 					))
 					.build()
 			);
