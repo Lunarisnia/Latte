@@ -10,7 +10,8 @@ public final class ModItems {
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Latte.MODID);
 
 	public static final DeferredItem<CafeLatteItem> CAFE_LATTE_ITEM =
-			ITEMS.registerItem("cafe_latte", CafeLatteItem::new);
+	    ITEMS.registerItem("cafe_latte", CafeLatteItem::new);
+
 	public static final DeferredItem<CoffeeMachineItem> COFFEE_MACHINE_ITEM = ITEMS.registerItem("coffee_machine_item", properties ->
 			new CoffeeMachineItem(
 					ModBlocks.COFFEE_MACHINE_BLOCK.get(), properties
