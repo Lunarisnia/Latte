@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "latte:block/coffee_machine"
+    "model": "latte:block/coffee_machine_block"
   }
 }

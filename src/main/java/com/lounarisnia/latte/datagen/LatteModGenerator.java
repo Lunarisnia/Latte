@@ -6,9 +6,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 @EventBusSubscriber(modid = Latte.MODID)
-public class DataGenerators {
+public class LatteModGenerator {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent.Client event) {
-        event.createProvider(LanguageProvider::new);
+        event.createProvider(LatteLanguageProvider::new);
+        event.createProvider(LatteModelProvider::new);
     }
 }

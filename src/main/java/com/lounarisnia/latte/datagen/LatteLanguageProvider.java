@@ -3,10 +3,11 @@ package com.lounarisnia.latte.datagen;
 import com.lounarisnia.latte.Latte;
 import com.lounarisnia.latte.items.ModItems;
 import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class LanguageProvider extends net.neoforged.neoforge.common.data.LanguageProvider {
+public class LatteLanguageProvider extends LanguageProvider {
 
-    public LanguageProvider(PackOutput output) {
+    public LatteLanguageProvider(PackOutput output) {
         super(output, Latte.MODID, "en_us");
     }
 
