@@ -22,6 +22,9 @@ public final class ModItems {
             )
         );
 
+    public static final DeferredItem<CoffeeBeanItem> COFFEE_BEAN_ITEM =
+        ITEMS.registerItem("coffee_bean", CoffeeBeanItem::new);
+
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }

@@ -4,7 +4,6 @@ import com.lounarisnia.latte.Latte;
 import com.lounarisnia.latte.blocks.CoffeeMachineBlock;
 import com.lounarisnia.latte.blocks.ModBlocks;
 import com.lounarisnia.latte.items.ModItems;
-import java.util.stream.Stream;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -20,11 +19,6 @@ public class LatteModelProvider extends ModelProvider {
     public LatteModelProvider(PackOutput output) {
         super(output, Latte.MODID);
     }
-
-    // @Override
-    // protected Stream<? extends Holder<Item>> getKnownItems() {
-    //     return Stream.of(ModItems.COFFEE_MACHINE_ITEM);
-    // }
 
     @Override
     protected void registerModels(
@@ -58,6 +52,11 @@ public class LatteModelProvider extends ModelProvider {
 
         itemModels.generateFlatItem(
             ModItems.CAFE_LATTE_ITEM.get(),
+            ModelTemplates.FLAT_ITEM
+        );
+
+        itemModels.generateFlatItem(
+            ModItems.COFFEE_BEAN_ITEM.get(),
             ModelTemplates.FLAT_ITEM
         );
     }
