@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "porta_filter=false": {
       "model": "latte:block/coffee_machine_block"
+    },
+    "porta_filter=true": {
+      "model": "latte:block/coffee_machine_porta_filter_on_block"
     }
   }
 }
