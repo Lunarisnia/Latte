@@ -1,5 +1,6 @@
 package com.lounarisnia.latte.blocks;
 
+import com.lounarisnia.latte.LatteBlockEntities;
 import java.util.UUID;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.UUIDUtil;
@@ -13,7 +14,7 @@ public class CoffeeMachineBlockEntity extends BlockEntity {
   private UUID brewerId;
 
   public CoffeeMachineBlockEntity(BlockPos pos, BlockState blockState) {
-    super(ModBlockEntities.COFFEE_MACHINE_BLOCK_ENTITY.get(), pos, blockState);
+    super(LatteBlockEntities.COFFEE_MACHINE_BLOCK_ENTITY.get(), pos, blockState);
   }
 
   @Override

@@ -1,11 +1,12 @@
-package com.lounarisnia.latte.blocks;
+package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.Latte;
+import com.lounarisnia.latte.blocks.CoffeeMachineBlock;
+import com.lounarisnia.latte.blocks.MeasuringCupBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public final class ModBlocks {
+public final class LatteBlocks {
 
   public static DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Latte.MODID);
 

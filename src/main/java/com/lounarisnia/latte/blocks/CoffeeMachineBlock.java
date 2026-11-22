@@ -1,6 +1,6 @@
 package com.lounarisnia.latte.blocks;
 
-import com.lounarisnia.latte.items.ModItems;
+import com.lounarisnia.latte.LatteItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -66,7 +66,7 @@ public class CoffeeMachineBlock extends Block implements EntityBlock {
     if (level.getBlockEntity(pos) instanceof CoffeeMachineBlockEntity machine) {
       Player player = level.getServer().getPlayerList().getPlayer(machine.getBrewerId());
 
-      ItemStack coffee = new ItemStack(ModItems.CAFE_LATTE_ITEM.get());
+      ItemStack coffee = new ItemStack(LatteItems.CAFE_LATTE_ITEM.get());
       if (!player.getInventory().add(coffee)) {
         player.drop(coffee, false);
       }

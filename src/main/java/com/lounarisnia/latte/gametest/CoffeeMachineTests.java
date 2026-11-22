@@ -1,8 +1,8 @@
 package com.lounarisnia.latte.gametest;
 
 import com.lounarisnia.latte.Latte;
+import com.lounarisnia.latte.LatteBlocks;
 import com.lounarisnia.latte.blocks.CoffeeMachineBlockEntity;
-import com.lounarisnia.latte.blocks.ModBlocks;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -26,7 +26,7 @@ public final class CoffeeMachineTests {
 
   private static void createsBlockEntity(GameTestHelper helper) {
     BlockPos pos = BlockPos.ZERO;
-    helper.setBlock(pos, ModBlocks.COFFEE_MACHINE_BLOCK.get());
+    helper.setBlock(pos, LatteBlocks.COFFEE_MACHINE_BLOCK.get());
     helper.assertTrue(
         helper.getLevel().getBlockEntity(helper.absolutePos(pos))
             instanceof CoffeeMachineBlockEntity,

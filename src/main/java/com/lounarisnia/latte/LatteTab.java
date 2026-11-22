@@ -1,6 +1,5 @@
 package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.items.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -18,13 +17,13 @@ public class LatteTab {
           () ->
               CreativeModeTab.builder()
                   .title(Component.literal("Latte"))
-                  .icon(() -> ModItems.CAFE_LATTE_ITEM.get().getDefaultInstance())
+                  .icon(() -> LatteItems.CAFE_LATTE_ITEM.get().getDefaultInstance())
                   .displayItems(
                       ((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.CAFE_LATTE_ITEM);
-                        output.accept(ModItems.COFFEE_MACHINE_ITEM);
-                        output.accept(ModItems.COFFEE_BEAN_ITEM);
-                        output.accept(ModItems.MEASURING_CUP_ITEM);
+                        output.accept(LatteItems.CAFE_LATTE_ITEM);
+                        output.accept(LatteItems.COFFEE_MACHINE_ITEM);
+                        output.accept(LatteItems.COFFEE_BEAN_ITEM);
+                        output.accept(LatteItems.MEASURING_CUP_ITEM);
                       }))
                   .build());
 

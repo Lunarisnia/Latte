@@ -1,7 +1,7 @@
 package com.lounarisnia.latte.datagen;
 
 import com.lounarisnia.latte.Latte;
-import com.lounarisnia.latte.items.ModItems;
+import com.lounarisnia.latte.LatteItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -13,9 +13,9 @@ public class LatteLanguageProvider extends LanguageProvider {
 
   @Override
   protected void addTranslations() {
-    add(ModItems.CAFE_LATTE_ITEM.get(), "Cafe Latte");
-    add(ModItems.COFFEE_MACHINE_ITEM.get(), "Coffee Machine");
-    add(ModItems.COFFEE_BEAN_ITEM.get(), "Coffee Bean");
-    add(ModItems.MEASURING_CUP_ITEM.get(), "Measuring Cup");
+    add(LatteItems.CAFE_LATTE_ITEM.get(), "Cafe Latte");
+    add(LatteItems.COFFEE_MACHINE_ITEM.get(), "Coffee Machine");
+    add(LatteItems.COFFEE_BEAN_ITEM.get(), "Coffee Bean");
+    add(LatteItems.MEASURING_CUP_ITEM.get(), "Measuring Cup");
   }
 }

@@ -1,13 +1,13 @@
-package com.lounarisnia.latte.blocks;
+package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.Latte;
+import com.lounarisnia.latte.blocks.CoffeeMachineBlockEntity;
 import java.util.function.Supplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public final class ModBlockEntities {
+public final class LatteBlockEntities {
 
   public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
       DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, Latte.MODID);
@@ -18,7 +18,7 @@ public final class ModBlockEntities {
               "coffee_machine_block_entity",
               () ->
                   new BlockEntityType<>(
-                      CoffeeMachineBlockEntity::new, false, ModBlocks.COFFEE_MACHINE_BLOCK.get()));
+                      CoffeeMachineBlockEntity::new, false, LatteBlocks.COFFEE_MACHINE_BLOCK.get()));
 
   public static void register(IEventBus modEventBus) {
     BLOCK_ENTITIES.register(modEventBus);

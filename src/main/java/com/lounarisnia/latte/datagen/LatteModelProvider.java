@@ -1,9 +1,9 @@
 package com.lounarisnia.latte.datagen;
 
 import com.lounarisnia.latte.Latte;
+import com.lounarisnia.latte.LatteBlocks;
+import com.lounarisnia.latte.LatteItems;
 import com.lounarisnia.latte.blocks.CoffeeMachineBlock;
-import com.lounarisnia.latte.blocks.ModBlocks;
-import com.lounarisnia.latte.items.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -22,7 +22,7 @@ public class LatteModelProvider extends ModelProvider {
 
 	@Override
 	protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-		Block coffeeMachineBlock = ModBlocks.COFFEE_MACHINE_BLOCK.get();
+		Block coffeeMachineBlock = LatteBlocks.COFFEE_MACHINE_BLOCK.get();
 
 		Variant coffeeMachineVariant = new Variant(this.modLocation("block/coffee_machine_block"));
 		Variant coffeeMachineWithPortaFilterVariant =
@@ -36,18 +36,18 @@ public class LatteModelProvider extends ModelProvider {
 										.select(
 												true, BlockModelGenerators.variant(coffeeMachineWithPortaFilterVariant))));
 
-		Block measuringCupBlock = ModBlocks.MEASURING_CUP_BLOCK.get();
+		Block measuringCupBlock = LatteBlocks.MEASURING_CUP_BLOCK.get();
 		Variant measuringCupVariant = new Variant(this.modLocation("block/measuring_cup_block"));
 
 		blockModels.blockStateOutput.accept(
 				MultiVariantGenerator.dispatch(measuringCupBlock, BlockModelGenerators.variant(measuringCupVariant))
 		);
 
-		itemModels.generateFlatItem(ModItems.CAFE_LATTE_ITEM.get(), ModelTemplates.FLAT_ITEM);
+		itemModels.generateFlatItem(LatteItems.CAFE_LATTE_ITEM.get(), ModelTemplates.FLAT_ITEM);
 
-		itemModels.generateFlatItem(ModItems.COFFEE_BEAN_ITEM.get(), ModelTemplates.FLAT_ITEM);
+		itemModels.generateFlatItem(LatteItems.COFFEE_BEAN_ITEM.get(), ModelTemplates.FLAT_ITEM);
 
 		blockModels.registerSimpleItemModel(
-				ModItems.MEASURING_CUP_ITEM.get(), this.modLocation("block/measuring_cup_block"));
+				LatteItems.MEASURING_CUP_ITEM.get(), this.modLocation("block/measuring_cup_block"));
 	}
 }

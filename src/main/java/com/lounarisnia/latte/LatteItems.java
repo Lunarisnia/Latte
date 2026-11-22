@@ -1,12 +1,14 @@
-package com.lounarisnia.latte.items;
+package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.Latte;
-import com.lounarisnia.latte.blocks.ModBlocks;
+import com.lounarisnia.latte.items.CafeLatteItem;
+import com.lounarisnia.latte.items.CoffeeBeanItem;
+import com.lounarisnia.latte.items.CoffeeMachineItem;
+import com.lounarisnia.latte.items.MeasuringCupItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public final class ModItems {
+public final class LatteItems {
 
   public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Latte.MODID);
 
@@ -16,7 +18,7 @@ public final class ModItems {
   public static final DeferredItem<CoffeeMachineItem> COFFEE_MACHINE_ITEM =
       ITEMS.registerItem(
           "coffee_machine_item",
-          properties -> new CoffeeMachineItem(ModBlocks.COFFEE_MACHINE_BLOCK.get(), properties));
+          properties -> new CoffeeMachineItem(LatteBlocks.COFFEE_MACHINE_BLOCK.get(), properties));
 
   public static final DeferredItem<CoffeeBeanItem> COFFEE_BEAN_ITEM =
       ITEMS.registerItem("coffee_bean_item", CoffeeBeanItem::new);
@@ -24,7 +26,7 @@ public final class ModItems {
   public static final DeferredItem<MeasuringCupItem> MEASURING_CUP_ITEM =
       ITEMS.registerItem(
           "measuring_cup_item",
-          properties -> new MeasuringCupItem(ModBlocks.MEASURING_CUP_BLOCK.get(), properties));
+          properties -> new MeasuringCupItem(LatteBlocks.MEASURING_CUP_BLOCK.get(), properties));
 
   public static void register(IEventBus modEventBus) {
     ITEMS.register(modEventBus);
