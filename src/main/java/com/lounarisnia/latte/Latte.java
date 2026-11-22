@@ -48,6 +48,7 @@ public class Latte {
     // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like
     // onServerStarting() below.
     NeoForge.EVENT_BUS.register(this);
+    // NeoForge.EVENT_BUS.register(new MeasuringCupMinigame());
 
     // Register our mod's ModConfigSpec so that FML can create and load the config file for us
     modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

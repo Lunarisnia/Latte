@@ -2,7 +2,7 @@ package com.lounarisnia.latte.gametest;
 
 import com.lounarisnia.latte.Latte;
 import com.lounarisnia.latte.LatteBlocks;
-import com.lounarisnia.latte.blocks.CoffeeMachineBlockEntity;
+import com.lounarisnia.latte.machines.CoffeeMachineBlockEntity;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;

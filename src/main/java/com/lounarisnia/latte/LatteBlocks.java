@@ -1,7 +1,7 @@
 package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.blocks.CoffeeMachineBlock;
 import com.lounarisnia.latte.blocks.MeasuringCupBlock;
+import com.lounarisnia.latte.machines.CoffeeMachineBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;

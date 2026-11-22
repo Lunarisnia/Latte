@@ -1,4 +1,4 @@
-package com.lounarisnia.latte.items;
+package com.lounarisnia.latte.tools;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;

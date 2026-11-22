@@ -1,4 +1,4 @@
-package com.lounarisnia.latte.items;
+package com.lounarisnia.latte.drinks;
 
 import com.lounarisnia.latte.ModAttachments;
 import net.minecraft.SharedConstants;

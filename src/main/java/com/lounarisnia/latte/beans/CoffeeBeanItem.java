@@ -1,4 +1,4 @@
-package com.lounarisnia.latte.items;
+package com.lounarisnia.latte.beans;
 
 import net.minecraft.world.item.Item;
 

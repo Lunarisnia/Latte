@@ -3,7 +3,7 @@ package com.lounarisnia.latte.datagen;
 import com.lounarisnia.latte.Latte;
 import com.lounarisnia.latte.LatteBlocks;
 import com.lounarisnia.latte.LatteItems;
-import com.lounarisnia.latte.blocks.CoffeeMachineBlock;
+import com.lounarisnia.latte.machines.CoffeeMachineBlock;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;

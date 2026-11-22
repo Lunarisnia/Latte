@@ -1,7 +1,7 @@
 package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.blocks.CoffeeMachineBlockEntity;
 import com.lounarisnia.latte.blocks.MeasuringCupBlockEntity;
+import com.lounarisnia.latte.machines.CoffeeMachineBlockEntity;
 import java.util.function.Supplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;

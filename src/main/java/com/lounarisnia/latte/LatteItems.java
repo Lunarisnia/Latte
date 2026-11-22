@@ -1,6 +1,10 @@
 package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.items.*;
+import com.lounarisnia.latte.beans.CoffeeBeanItem;
+import com.lounarisnia.latte.beans.CoffeePackageItem;
+import com.lounarisnia.latte.drinks.CafeLatteItem;
+import com.lounarisnia.latte.machines.CoffeeMachineItem;
+import com.lounarisnia.latte.tools.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;

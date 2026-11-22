@@ -1,4 +1,4 @@
-package com.lounarisnia.latte.blocks;
+package com.lounarisnia.latte.machines;
 
 import com.lounarisnia.latte.LatteBlockEntities;
 import java.util.UUID;

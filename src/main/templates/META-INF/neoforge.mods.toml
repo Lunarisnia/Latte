@@ -85,3 +85,6 @@ A simple, and nice, coffee mod
 # stop your mod loading on the server for example.
 #[features.${mod_id}]
 #openGLVersion="[3.2,)"
+
+[[mixins]]
+config = "latte.mixins.json"

@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.lounarisnia.latte.mixins.minigames",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinigameCamera"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
