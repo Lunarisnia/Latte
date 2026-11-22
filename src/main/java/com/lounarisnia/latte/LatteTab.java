@@ -9,21 +9,24 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class LatteTab {
-	public static final DeferredRegister<CreativeModeTab> LATTE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Latte.MODID);
+  public static final DeferredRegister<CreativeModeTab> LATTE_TAB =
+      DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Latte.MODID);
 
-	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> LATTE_TAB_HOLDER =
-			LATTE_TAB.register("latte_tab", () -> CreativeModeTab.builder()
-					.title(Component.literal("Latte"))
-					.icon(() -> ModItems.CAFE_LATTE_ITEM.get().getDefaultInstance())
-					.displayItems(((itemDisplayParameters, output) -> {
-						output.accept(ModItems.CAFE_LATTE_ITEM);
-						output.accept(ModItems.COFFEE_MACHINE_ITEM);
-					}
-					))
-					.build()
-			);
+  public static final DeferredHolder<CreativeModeTab, CreativeModeTab> LATTE_TAB_HOLDER =
+      LATTE_TAB.register(
+          "latte_tab",
+          () ->
+              CreativeModeTab.builder()
+                  .title(Component.literal("Latte"))
+                  .icon(() -> ModItems.CAFE_LATTE_ITEM.get().getDefaultInstance())
+                  .displayItems(
+                      ((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.CAFE_LATTE_ITEM);
+                        output.accept(ModItems.COFFEE_MACHINE_ITEM);
+                      }))
+                  .build());
 
-	public static void register(IEventBus modEventBus) {
-		LATTE_TAB.register(modEventBus);
-	}
+  public static void register(IEventBus modEventBus) {
+    LATTE_TAB.register(modEventBus);
+  }
 }

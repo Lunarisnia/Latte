@@ -3,6 +3,14 @@ plugins {
     id 'maven-publish'
     id 'net.neoforged.moddev' version '2.0.148'
     id 'idea'
+    id 'com.diffplug.spotless' version '8.0.0'
+}
+
+spotless {
+    java {
+        target 'src/*/java/**/*.java'
+        googleJavaFormat()
+    }
 }
 
 tasks.named('wrapper', Wrapper).configure {

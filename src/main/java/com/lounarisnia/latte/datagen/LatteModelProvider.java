@@ -16,48 +16,28 @@ import net.minecraft.world.level.block.Block;
 
 public class LatteModelProvider extends ModelProvider {
 
-    public LatteModelProvider(PackOutput output) {
-        super(output, Latte.MODID);
-    }
+  public LatteModelProvider(PackOutput output) {
+    super(output, Latte.MODID);
+  }
 
-    @Override
-    protected void registerModels(
-        BlockModelGenerators blockModels,
-        ItemModelGenerators itemModels
-    ) {
-        Block coffeeMachineBlock = ModBlocks.COFFEE_MACHINE_BLOCK.get();
+  @Override
+  protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+    Block coffeeMachineBlock = ModBlocks.COFFEE_MACHINE_BLOCK.get();
 
-        Variant coffeeMachineVariant = new Variant(
-            this.modLocation("block/coffee_machine_block")
-        );
-        Variant coffeeMachineWithPortaFilterVariant = new Variant(
-            this.modLocation("block/coffee_machine_porta_filter_on_block")
-        );
+    Variant coffeeMachineVariant = new Variant(this.modLocation("block/coffee_machine_block"));
+    Variant coffeeMachineWithPortaFilterVariant =
+        new Variant(this.modLocation("block/coffee_machine_porta_filter_on_block"));
 
-        blockModels.blockStateOutput.accept(
-            MultiVariantGenerator.dispatch(coffeeMachineBlock).with(
+    blockModels.blockStateOutput.accept(
+        MultiVariantGenerator.dispatch(coffeeMachineBlock)
+            .with(
                 PropertyDispatch.initial(CoffeeMachineBlock.PORTA_FILTER)
+                    .select(false, BlockModelGenerators.variant(coffeeMachineVariant))
                     .select(
-                        false,
-                        BlockModelGenerators.variant(coffeeMachineVariant)
-                    )
-                    .select(
-                        true,
-                        BlockModelGenerators.variant(
-                            coffeeMachineWithPortaFilterVariant
-                        )
-                    )
-            )
-        );
+                        true, BlockModelGenerators.variant(coffeeMachineWithPortaFilterVariant))));
 
-        itemModels.generateFlatItem(
-            ModItems.CAFE_LATTE_ITEM.get(),
-            ModelTemplates.FLAT_ITEM
-        );
+    itemModels.generateFlatItem(ModItems.CAFE_LATTE_ITEM.get(), ModelTemplates.FLAT_ITEM);
 
-        itemModels.generateFlatItem(
-            ModItems.COFFEE_BEAN_ITEM.get(),
-            ModelTemplates.FLAT_ITEM
-        );
-    }
+    itemModels.generateFlatItem(ModItems.COFFEE_BEAN_ITEM.get(), ModelTemplates.FLAT_ITEM);
+  }
 }

@@ -26,119 +26,81 @@ import org.jspecify.annotations.Nullable;
 
 public class CoffeeMachineBlock extends Block implements EntityBlock {
 
-    public static BooleanProperty PORTA_FILTER = BooleanProperty.create(
-        "porta_filter"
-    );
+  public static BooleanProperty PORTA_FILTER = BooleanProperty.create("porta_filter");
 
-    public CoffeeMachineBlock(Properties properties) {
-        super(properties.sound(SoundType.ANVIL).noOcclusion());
-        registerDefaultState(defaultBlockState().setValue(PORTA_FILTER, false));
+  public CoffeeMachineBlock(Properties properties) {
+    super(properties.sound(SoundType.ANVIL).noOcclusion());
+    registerDefaultState(defaultBlockState().setValue(PORTA_FILTER, false));
+  }
+
+  @Override
+  public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    return new CoffeeMachineBlockEntity(pos, state);
+  }
+
+  @Override
+  protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
+    super.createBlockStateDefinition(builder);
+
+    builder.add(PORTA_FILTER);
+  }
+
+  @Override
+  protected VoxelShape getShape(
+      BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    final VoxelShape shape = Block.box(5, 0, 3, 11, 11, 14);
+    return shape;
+  }
+
+  @Override
+  protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    level.setBlock(pos, state.setValue(CoffeeMachineBlock.PORTA_FILTER, false), Block.UPDATE_ALL);
+
+    Vec3 center = Vec3.atCenterOf(pos);
+    for (Player player : level.players()) {
+      if (player.distanceToSqr(center) <= 16 * 16) {
+        player.displayClientMessage(Component.literal("Coffee is ready!"), true);
+      }
     }
 
-    @Override
-    public @Nullable BlockEntity newBlockEntity(
-        BlockPos pos,
-        BlockState state
-    ) {
-        return new CoffeeMachineBlockEntity(pos, state);
+    if (level.getBlockEntity(pos) instanceof CoffeeMachineBlockEntity machine) {
+      Player player = level.getServer().getPlayerList().getPlayer(machine.getBrewerId());
+
+      ItemStack coffee = new ItemStack(ModItems.CAFE_LATTE_ITEM.get());
+      if (!player.getInventory().add(coffee)) {
+        player.drop(coffee, false);
+      }
+    }
+  }
+
+  @Override
+  protected InteractionResult useWithoutItem(
+      BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+    if (!level.isClientSide()) {
+      BlockState updatedState = state.setValue(PORTA_FILTER, true);
+      level.setBlock(pos, updatedState, Block.UPDATE_ALL);
+
+      if (level.getBlockEntity(pos) instanceof CoffeeMachineBlockEntity machine) {
+        machine.setBrewerId(player.getUUID());
+      }
+
+      level.scheduleTick(pos, this, 40);
     }
 
-    @Override
-    protected void createBlockStateDefinition(
-        Builder<Block, BlockState> builder
-    ) {
-        super.createBlockStateDefinition(builder);
+    return InteractionResult.SUCCESS;
+  }
 
-        builder.add(PORTA_FILTER);
-    }
+  @Override
+  protected InteractionResult useItemOn(
+      ItemStack stack, // The currently held item
+      BlockState state, // The state of the current item IMMUTABLE
+      Level level,
+      BlockPos pos,
+      Player player,
+      InteractionHand hand,
+      BlockHitResult hitResult) {
+    // TODO: Add porta filter here
 
-    @Override
-    protected VoxelShape getShape(
-        BlockState state,
-        BlockGetter level,
-        BlockPos pos,
-        CollisionContext context
-    ) {
-        final VoxelShape shape = Block.box(5, 0, 3, 11, 11, 14);
-        return shape;
-    }
-
-    @Override
-    protected void tick(
-        BlockState state,
-        ServerLevel level,
-        BlockPos pos,
-        RandomSource random
-    ) {
-        level.setBlock(
-            pos,
-            state.setValue(CoffeeMachineBlock.PORTA_FILTER, false),
-            Block.UPDATE_ALL
-        );
-
-        Vec3 center = Vec3.atCenterOf(pos);
-        for (Player player : level.players()) {
-            if (player.distanceToSqr(center) <= 16 * 16) {
-                player.displayClientMessage(
-                    Component.literal("Coffee is ready!"),
-                    true
-                );
-            }
-        }
-
-        if (
-            level.getBlockEntity(pos) instanceof
-                CoffeeMachineBlockEntity machine
-        ) {
-            Player player = level
-                .getServer()
-                .getPlayerList()
-                .getPlayer(machine.getBrewerId());
-
-            ItemStack coffee = new ItemStack(ModItems.CAFE_LATTE_ITEM.get());
-            if (!player.getInventory().add(coffee)) {
-                player.drop(coffee, false);
-            }
-        }
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        BlockState state,
-        Level level,
-        BlockPos pos,
-        Player player,
-        BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide()) {
-            BlockState updatedState = state.setValue(PORTA_FILTER, true);
-            level.setBlock(pos, updatedState, Block.UPDATE_ALL);
-
-            if (
-                level.getBlockEntity(pos) instanceof
-                    CoffeeMachineBlockEntity machine
-            ) {
-                machine.setBrewerId(player.getUUID());
-            }
-
-            level.scheduleTick(pos, this, 40);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        ItemStack stack, // The currently held item
-        BlockState state, // The state of the current item IMMUTABLE
-        Level level,
-        BlockPos pos,
-        Player player,
-        InteractionHand hand,
-        BlockHitResult hitResult
-    ) {
-        // TODO: Add porta filter here
-
-        return InteractionResult.TRY_WITH_EMPTY_HAND;
-    }
+    return InteractionResult.TRY_WITH_EMPTY_HAND;
+  }
 }

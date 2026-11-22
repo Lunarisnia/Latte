@@ -10,38 +10,34 @@ import net.minecraft.world.level.storage.ValueOutput;
 
 public class CoffeeMachineBlockEntity extends BlockEntity {
 
-    private UUID brewerId;
+  private UUID brewerId;
 
-    public CoffeeMachineBlockEntity(BlockPos pos, BlockState blockState) {
-        super(
-            ModBlockEntities.COFFEE_MACHINE_BLOCK_ENTITY.get(),
-            pos,
-            blockState
-        );
+  public CoffeeMachineBlockEntity(BlockPos pos, BlockState blockState) {
+    super(ModBlockEntities.COFFEE_MACHINE_BLOCK_ENTITY.get(), pos, blockState);
+  }
+
+  @Override
+  protected void loadAdditional(ValueInput input) {
+    super.loadAdditional(input);
+
+    this.brewerId = input.read("brewerId", UUIDUtil.CODEC).orElse(null);
+  }
+
+  @Override
+  protected void saveAdditional(ValueOutput output) {
+    super.saveAdditional(output);
+
+    if (brewerId != null) {
+      output.store("brewerId", UUIDUtil.CODEC, brewerId);
     }
+  }
 
-    @Override
-    protected void loadAdditional(ValueInput input) {
-        super.loadAdditional(input);
+  public void setBrewerId(UUID brewerId) {
+    this.brewerId = brewerId;
+    setChanged();
+  }
 
-        this.brewerId = input.read("brewerId", UUIDUtil.CODEC).orElse(null);
-    }
-
-    @Override
-    protected void saveAdditional(ValueOutput output) {
-        super.saveAdditional(output);
-
-        if (brewerId != null) {
-            output.store("brewerId", UUIDUtil.CODEC, brewerId);
-        }
-    }
-
-    public void setBrewerId(UUID brewerId) {
-        this.brewerId = brewerId;
-        setChanged();
-    }
-
-    public UUID getBrewerId() {
-        return brewerId;
-    }
+  public UUID getBrewerId() {
+    return brewerId;
+  }
 }

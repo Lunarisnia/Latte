@@ -21,52 +21,56 @@ import org.slf4j.Logger;
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Latte.MODID)
 public class Latte {
-	// Define mod id in a common place for everything to reference
-	public static final String MODID = "latte";
-	// Directly reference a slf4j logger
-	public static final Logger LOGGER = LogUtils.getLogger();
+  // Define mod id in a common place for everything to reference
+  public static final String MODID = "latte";
+  // Directly reference a slf4j logger
+  public static final Logger LOGGER = LogUtils.getLogger();
 
-	// Create a Deferred Register to hold Items which will all be registered under the "latte" namespace
-	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
+  // Create a Deferred Register to hold Items which will all be registered under the "latte"
+  // namespace
+  public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
 
-	// The constructor for the mod class is the first code that is run when your mod is loaded.
-	// FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-	public Latte(IEventBus modEventBus, ModContainer modContainer) {
-		// Register the commonSetup method for modloading
-		modEventBus.addListener(this::commonSetup);
+  // The constructor for the mod class is the first code that is run when your mod is loaded.
+  // FML will recognize some parameter types like IEventBus or ModContainer and pass them in
+  // automatically.
+  public Latte(IEventBus modEventBus, ModContainer modContainer) {
+    // Register the commonSetup method for modloading
+    modEventBus.addListener(this::commonSetup);
 
-		ModAttachments.register(modEventBus);
-		ModBlocks.register(modEventBus);
-		ModBlockEntities.register(modEventBus);
-		CoffeeMachineTests.register(modEventBus);
-		ModItems.register(modEventBus);
-		// Register the Deferred Register to the mod event bus so tabs get registered
-		LatteTab.register(modEventBus);
+    ModAttachments.register(modEventBus);
+    ModBlocks.register(modEventBus);
+    ModBlockEntities.register(modEventBus);
+    CoffeeMachineTests.register(modEventBus);
+    ModItems.register(modEventBus);
+    // Register the Deferred Register to the mod event bus so tabs get registered
+    LatteTab.register(modEventBus);
 
-		// Register ourselves for server and other game events we are interested in.
-		// Note that this is necessary if and only if we want *this* class (Latte) to respond directly to events.
-		// Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-		NeoForge.EVENT_BUS.register(this);
+    // Register ourselves for server and other game events we are interested in.
+    // Note that this is necessary if and only if we want *this* class (Latte) to respond directly
+    // to events.
+    // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like
+    // onServerStarting() below.
+    NeoForge.EVENT_BUS.register(this);
 
-		// Register our mod's ModConfigSpec so that FML can create and load the config file for us
-		modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-	}
+    // Register our mod's ModConfigSpec so that FML can create and load the config file for us
+    modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+  }
 
-	private void commonSetup(FMLCommonSetupEvent event) {
-		// Some common setup code
-		LOGGER.info("HELLO FROM COMMON SETUP");
+  private void commonSetup(FMLCommonSetupEvent event) {
+    // Some common setup code
+    LOGGER.info("HELLO FROM COMMON SETUP");
 
-		if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
-			LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-		}
+    if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
+      LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
+    }
 
-		LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
+    LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
 
-		Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
-	}
+    Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
+  }
 
-	@SubscribeEvent
-	public void onServerStarting(ServerStartingEvent event) {
-		LOGGER.info("HELLO from server starting");
-	}
+  @SubscribeEvent
+  public void onServerStarting(ServerStartingEvent event) {
+    LOGGER.info("HELLO from server starting");
+  }
 }
