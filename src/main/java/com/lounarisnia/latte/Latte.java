@@ -1,5 +1,8 @@
 package com.lounarisnia.latte;
 
+import com.lounarisnia.latte.event_handler.ClientRenderHandler;
+import com.lounarisnia.latte.event_handler.ExtractLevelHandler;
+import com.lounarisnia.latte.event_handler.RenderHandHandler;
 import com.lounarisnia.latte.gametest.CoffeeMachineTests;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -48,7 +51,9 @@ public class Latte {
     // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like
     // onServerStarting() below.
     NeoForge.EVENT_BUS.register(this);
-    // NeoForge.EVENT_BUS.register(new MeasuringCupMinigame());
+    NeoForge.EVENT_BUS.register(new RenderHandHandler());
+    NeoForge.EVENT_BUS.register(new ExtractLevelHandler());
+    NeoForge.EVENT_BUS.register(new ClientRenderHandler());
 
     // Register our mod's ModConfigSpec so that FML can create and load the config file for us
     modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

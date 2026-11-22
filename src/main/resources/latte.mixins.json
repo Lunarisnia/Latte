@@ -4,7 +4,9 @@
   "package": "com.lounarisnia.latte.mixins.minigames",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "MinigameCamera"
+    "MinigameBlockInput",
+    "MinigameCamera",
+    "MinigameHandleMouse"
   ],
   "injectors": {
     "defaultRequire": 1
