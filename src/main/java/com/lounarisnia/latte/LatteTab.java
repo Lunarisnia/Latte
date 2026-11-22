@@ -23,6 +23,8 @@ public class LatteTab {
                       ((itemDisplayParameters, output) -> {
                         output.accept(ModItems.CAFE_LATTE_ITEM);
                         output.accept(ModItems.COFFEE_MACHINE_ITEM);
+                        output.accept(ModItems.COFFEE_BEAN_ITEM);
+                        output.accept(ModItems.MEASURING_CUP_ITEM);
                       }))
                   .build());
 

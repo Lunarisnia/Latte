@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "latte:block/measuring_cup_block"
+    }
+  }
+}

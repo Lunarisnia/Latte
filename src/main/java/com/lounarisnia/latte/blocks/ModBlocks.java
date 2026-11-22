@@ -12,6 +12,9 @@ public final class ModBlocks {
   public static DeferredBlock<CoffeeMachineBlock> COFFEE_MACHINE_BLOCK =
       BLOCKS.registerBlock("coffee_machine_block", CoffeeMachineBlock::new);
 
+  public static DeferredBlock<MeasuringCupBlock> MEASURING_CUP_BLOCK =
+      BLOCKS.registerBlock("measuring_cup_block", MeasuringCupBlock::new);
+
   public static void register(IEventBus modEventBus) {
     BLOCKS.register(modEventBus);
   }

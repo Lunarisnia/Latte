@@ -16,5 +16,6 @@ public class LatteLanguageProvider extends LanguageProvider {
     add(ModItems.CAFE_LATTE_ITEM.get(), "Cafe Latte");
     add(ModItems.COFFEE_MACHINE_ITEM.get(), "Coffee Machine");
     add(ModItems.COFFEE_BEAN_ITEM.get(), "Coffee Bean");
+    add(ModItems.MEASURING_CUP_ITEM.get(), "Measuring Cup");
   }
 }

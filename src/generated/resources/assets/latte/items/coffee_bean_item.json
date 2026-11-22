@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "latte:item/coffee_bean_item"
+  }
+}
