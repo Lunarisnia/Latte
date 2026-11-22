@@ -17,5 +17,6 @@ public class LatteLanguageProvider extends LanguageProvider {
     add(LatteItems.COFFEE_MACHINE_ITEM.get(), "Coffee Machine");
     add(LatteItems.COFFEE_BEAN_ITEM.get(), "Coffee Bean");
     add(LatteItems.MEASURING_CUP_ITEM.get(), "Measuring Cup");
+    add(LatteItems.COFFEE_PACKAGE_ITEM.get(), "Coffee Package");
   }
 }

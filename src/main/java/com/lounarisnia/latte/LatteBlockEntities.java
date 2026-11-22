@@ -1,6 +1,7 @@
 package com.lounarisnia.latte;
 
 import com.lounarisnia.latte.blocks.CoffeeMachineBlockEntity;
+import com.lounarisnia.latte.blocks.MeasuringCupBlockEntity;
 import java.util.function.Supplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -18,7 +19,17 @@ public final class LatteBlockEntities {
               "coffee_machine_block_entity",
               () ->
                   new BlockEntityType<>(
-                      CoffeeMachineBlockEntity::new, false, LatteBlocks.COFFEE_MACHINE_BLOCK.get()));
+                      CoffeeMachineBlockEntity::new,
+                      false,
+                      LatteBlocks.COFFEE_MACHINE_BLOCK.get()));
+
+  public static final Supplier<BlockEntityType<MeasuringCupBlockEntity>>
+      MEASURING_CUP_BLOCK_ENTITY =
+          BLOCK_ENTITIES.register(
+              "measuring_cup_block_entity",
+              () ->
+                  new BlockEntityType<>(
+                      MeasuringCupBlockEntity::new, false, LatteBlocks.MEASURING_CUP_BLOCK.get()));
 
   public static void register(IEventBus modEventBus) {
     BLOCK_ENTITIES.register(modEventBus);

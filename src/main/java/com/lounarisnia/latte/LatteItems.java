@@ -1,9 +1,6 @@
 package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.items.CafeLatteItem;
-import com.lounarisnia.latte.items.CoffeeBeanItem;
-import com.lounarisnia.latte.items.CoffeeMachineItem;
-import com.lounarisnia.latte.items.MeasuringCupItem;
+import com.lounarisnia.latte.items.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -27,6 +24,9 @@ public final class LatteItems {
       ITEMS.registerItem(
           "measuring_cup_item",
           properties -> new MeasuringCupItem(LatteBlocks.MEASURING_CUP_BLOCK.get(), properties));
+
+  public static DeferredItem<CoffeePackageItem> COFFEE_PACKAGE_ITEM =
+      ITEMS.registerItem("coffee_package_item", CoffeePackageItem::new);
 
   public static void register(IEventBus modEventBus) {
     ITEMS.register(modEventBus);

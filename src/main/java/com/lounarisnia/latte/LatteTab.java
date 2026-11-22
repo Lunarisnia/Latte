@@ -24,6 +24,7 @@ public class LatteTab {
                         output.accept(LatteItems.COFFEE_MACHINE_ITEM);
                         output.accept(LatteItems.COFFEE_BEAN_ITEM);
                         output.accept(LatteItems.MEASURING_CUP_ITEM);
+                        output.accept(LatteItems.COFFEE_PACKAGE_ITEM);
                       }))
                   .build());
 

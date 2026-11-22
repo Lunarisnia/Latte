@@ -16,38 +16,40 @@ import net.minecraft.world.level.block.Block;
 
 public class LatteModelProvider extends ModelProvider {
 
-	public LatteModelProvider(PackOutput output) {
-		super(output, Latte.MODID);
-	}
+  public LatteModelProvider(PackOutput output) {
+    super(output, Latte.MODID);
+  }
 
-	@Override
-	protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-		Block coffeeMachineBlock = LatteBlocks.COFFEE_MACHINE_BLOCK.get();
+  @Override
+  protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+    Block coffeeMachineBlock = LatteBlocks.COFFEE_MACHINE_BLOCK.get();
 
-		Variant coffeeMachineVariant = new Variant(this.modLocation("block/coffee_machine_block"));
-		Variant coffeeMachineWithPortaFilterVariant =
-				new Variant(this.modLocation("block/coffee_machine_porta_filter_on_block"));
+    Variant coffeeMachineVariant = new Variant(this.modLocation("block/coffee_machine_block"));
+    Variant coffeeMachineWithPortaFilterVariant =
+        new Variant(this.modLocation("block/coffee_machine_porta_filter_on_block"));
 
-		blockModels.blockStateOutput.accept(
-				MultiVariantGenerator.dispatch(coffeeMachineBlock)
-						.with(
-								PropertyDispatch.initial(CoffeeMachineBlock.PORTA_FILTER)
-										.select(false, BlockModelGenerators.variant(coffeeMachineVariant))
-										.select(
-												true, BlockModelGenerators.variant(coffeeMachineWithPortaFilterVariant))));
+    blockModels.blockStateOutput.accept(
+        MultiVariantGenerator.dispatch(coffeeMachineBlock)
+            .with(
+                PropertyDispatch.initial(CoffeeMachineBlock.PORTA_FILTER)
+                    .select(false, BlockModelGenerators.variant(coffeeMachineVariant))
+                    .select(
+                        true, BlockModelGenerators.variant(coffeeMachineWithPortaFilterVariant))));
 
-		Block measuringCupBlock = LatteBlocks.MEASURING_CUP_BLOCK.get();
-		Variant measuringCupVariant = new Variant(this.modLocation("block/measuring_cup_block"));
+    Block measuringCupBlock = LatteBlocks.MEASURING_CUP_BLOCK.get();
+    Variant measuringCupVariant = new Variant(this.modLocation("block/measuring_cup_block"));
 
-		blockModels.blockStateOutput.accept(
-				MultiVariantGenerator.dispatch(measuringCupBlock, BlockModelGenerators.variant(measuringCupVariant))
-		);
+    blockModels.blockStateOutput.accept(
+        MultiVariantGenerator.dispatch(
+            measuringCupBlock, BlockModelGenerators.variant(measuringCupVariant)));
 
-		itemModels.generateFlatItem(LatteItems.CAFE_LATTE_ITEM.get(), ModelTemplates.FLAT_ITEM);
+    itemModels.generateFlatItem(LatteItems.CAFE_LATTE_ITEM.get(), ModelTemplates.FLAT_ITEM);
 
-		itemModels.generateFlatItem(LatteItems.COFFEE_BEAN_ITEM.get(), ModelTemplates.FLAT_ITEM);
+    itemModels.generateFlatItem(LatteItems.COFFEE_BEAN_ITEM.get(), ModelTemplates.FLAT_ITEM);
 
-		blockModels.registerSimpleItemModel(
-				LatteItems.MEASURING_CUP_ITEM.get(), this.modLocation("block/measuring_cup_block"));
-	}
+    itemModels.generateFlatItem(LatteItems.COFFEE_PACKAGE_ITEM.get(), ModelTemplates.FLAT_ITEM);
+
+    blockModels.registerSimpleItemModel(
+        LatteItems.MEASURING_CUP_ITEM.get(), this.modLocation("block/measuring_cup_block"));
+  }
 }
