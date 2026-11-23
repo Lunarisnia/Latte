@@ -20,7 +20,7 @@
     {
       "id": "measuring_cup",
       "pickable": true,
-      "strokes": true,
+      "strokes": false,
       "pos": [
         8,
         0,
