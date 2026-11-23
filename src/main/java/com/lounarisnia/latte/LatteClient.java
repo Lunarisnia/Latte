@@ -1,5 +1,8 @@
 package com.lounarisnia.latte;
 
+import com.lounarisnia.latte.stations.MeasuringCupBehavior;
+import com.lounarisnia.latte.stations.MeasuringCupStation;
+import com.pockyl.diegesis.api.client.DiegesisClient;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
@@ -45,6 +48,7 @@ public class LatteClient {
 
   @SubscribeEvent
   static void onClientSetup(FMLClientSetupEvent event) {
+    DiegesisClient.registerBehavior(MeasuringCupStation.ID, MeasuringCupBehavior::new);
     // Some client setup code
     Latte.LOGGER.info("HELLO FROM CLIENT SETUP");
     Latte.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());

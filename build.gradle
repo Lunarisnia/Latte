@@ -36,6 +36,8 @@ sourceSets.main.resources {
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+    maven { url = "https://cursemaven.com"; content { includeGroup "curse.maven" } }
+    maven { url = "https://api.modrinth.com/maven"; content { includeGroup "maven.modrinth" } }
 }
 
 base {
@@ -146,6 +148,7 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    implementation "curse.maven:diegesis-1790227:9770829"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

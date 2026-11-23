@@ -1,9 +1,7 @@
 package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.event_handler.ClientRenderHandler;
-import com.lounarisnia.latte.event_handler.ExtractLevelHandler;
-import com.lounarisnia.latte.event_handler.RenderHandHandler;
 import com.lounarisnia.latte.gametest.CoffeeMachineTests;
+import com.lounarisnia.latte.stations.MeasuringCupStation;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Blocks;
@@ -15,7 +13,6 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -25,10 +22,6 @@ public class Latte {
   public static final String MODID = "latte";
   // Directly reference a slf4j logger
   public static final Logger LOGGER = LogUtils.getLogger();
-
-  // Create a Deferred Register to hold Items which will all be registered under the "latte"
-  // namespace
-  public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
 
   // The constructor for the mod class is the first code that is run when your mod is loaded.
   // FML will recognize some parameter types like IEventBus or ModContainer and pass them in
@@ -44,6 +37,7 @@ public class Latte {
     LatteItems.register(modEventBus);
     // Register the Deferred Register to the mod event bus so tabs get registered
     LatteTab.register(modEventBus);
+    MeasuringCupStation.register();
 
     // Register ourselves for server and other game events we are interested in.
     // Note that this is necessary if and only if we want *this* class (Latte) to respond directly
@@ -51,9 +45,9 @@ public class Latte {
     // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like
     // onServerStarting() below.
     NeoForge.EVENT_BUS.register(this);
-    NeoForge.EVENT_BUS.register(new RenderHandHandler());
-    NeoForge.EVENT_BUS.register(new ExtractLevelHandler());
-    NeoForge.EVENT_BUS.register(new ClientRenderHandler());
+    // NeoForge.EVENT_BUS.register(new RenderHandHandler());
+    // NeoForge.EVENT_BUS.register(new ExtractLevelHandler());
+    // NeoForge.EVENT_BUS.register(new ClientRenderHandler());
 
     // Register our mod's ModConfigSpec so that FML can create and load the config file for us
     modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

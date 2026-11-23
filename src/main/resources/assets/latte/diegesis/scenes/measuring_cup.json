@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Pocky-l/diegesis/main/docs/schema/scene.schema.json",
+  "camera": {
+    "position": [
+      8,
+      40,
+      -21
+    ],
+    "target": [
+      8,
+      5.5,
+      8
+    ],
+    "fov": 60
+  },
+  "interface": {
+    "inventory_panel": false
+  },
+  "nodes": [
+    {
+      "id": "measuring_cup",
+      "pickable": true,
+      "strokes": true,
+      "pos": [
+        8,
+        0,
+        8
+      ],
+      "collider": {
+        "from": [
+          -2.3,
+          0,
+          -1.3
+        ],
+        "to": [
+          2.3,
+          5,
+          3.3
+        ]
+      },
+      "visual": {
+        "model": "latte:diegesis/measuring_cup_block"
+      }
+    }
+  ]
+}
