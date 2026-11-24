@@ -1,0 +1,16 @@
+{
+  "sprites": [
+    "latte:coffee_bean"
+  ],
+  "color": "#FFFFFFFF",
+  "size": [
+    0.7,
+    1.1
+  ],
+  "life": [
+    1.0,
+    1.5
+  ],
+  "gravity": 32,
+  "fade": false
+}

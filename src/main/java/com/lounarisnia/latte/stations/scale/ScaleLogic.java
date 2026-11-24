@@ -1,8 +1,9 @@
-package com.lounarisnia.latte.stations;
+package com.lounarisnia.latte.stations.scale;
 
 import com.lounarisnia.latte.Latte;
 import com.lounarisnia.latte.LatteItems;
 import com.pockyl.diegesis.api.state.SlotRef;
+import com.pockyl.diegesis.api.state.TankContents;
 import com.pockyl.diegesis.api.station.StationContext;
 import com.pockyl.diegesis.api.station.StationLogic;
 import net.minecraft.nbt.CompoundTag;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public class ScaleLogic implements StationLogic {
+  private static int BEAN_WEIGHT = 1;
 
   public ScaleLogic(StationContext stationContext) {}
 
@@ -28,21 +30,32 @@ public class ScaleLogic implements StationLogic {
   @Override
   public void onCustomAction(
       StationContext station, Player player, String action, CompoundTag data) {
-    if (!"take_bean_pack".equals(action)) {
-      return;
+    if ("take_bean_pack".equals(action)) {
+      SlotRef slot = new SlotRef("bean_pack", 0);
+      ItemStack stack = station.state().getItem(slot);
+
+      if (stack.isEmpty()
+          || !player.inventoryMenu.getCarried().isEmpty()
+          || !mayTake(station, player, slot)) {
+        return;
+      }
+
+      ItemStack taken = stack.copy();
+      station.state().setItem(slot, ItemStack.EMPTY);
+      player.inventoryMenu.setCarried(taken);
     }
 
-    SlotRef slot = new SlotRef("bean_pack", 0);
-    ItemStack stack = station.state().getItem(slot);
+    if ("pour_bean".equals(action)) {
+      TankContents current = station.state().getTank("cup_receiver");
+      station
+          .state()
+          .setTank(
+              "cup_receiver",
+              current.plus(
+                  TankContents.of(
+                      Identifier.fromNamespaceAndPath("minecraft", "water"), BEAN_WEIGHT)));
 
-    if (stack.isEmpty()
-        || !player.inventoryMenu.getCarried().isEmpty()
-        || !mayTake(station, player, slot)) {
-      return;
+      Latte.LOGGER.debug("Tank Capacity: {}", current.amount());
     }
-
-    ItemStack taken = stack.copy();
-    station.state().setItem(slot, ItemStack.EMPTY);
-    player.inventoryMenu.setCarried(taken);
   }
 }

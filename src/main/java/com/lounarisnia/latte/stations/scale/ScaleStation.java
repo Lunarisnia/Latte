@@ -1,10 +1,10 @@
-package com.lounarisnia.latte.stations;
+package com.lounarisnia.latte.stations.scale;
 
 import com.lounarisnia.latte.Latte;
 import com.lounarisnia.latte.LatteBlocks;
 import com.pockyl.diegesis.api.Diegesis;
-import com.pockyl.diegesis.api.state.ControlSpec;
 import com.pockyl.diegesis.api.state.StationSchema;
+import com.pockyl.diegesis.api.state.TankSpec;
 import com.pockyl.diegesis.api.station.StationType;
 import net.minecraft.resources.Identifier;
 
@@ -19,7 +19,7 @@ public class ScaleStation {
   public static StationSchema schema() {
     return StationSchema.builder()
         .slots("bean_pack", 1)
-        .control("foobar", ControlSpec.stepped(-1.0f, 1.0f, 64, 0.0f))
+        .tank("cup_receiver", TankSpec.of(30))
         .build();
   }
 

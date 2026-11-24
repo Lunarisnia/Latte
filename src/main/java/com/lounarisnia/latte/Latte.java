@@ -1,7 +1,7 @@
 package com.lounarisnia.latte;
 
 import com.lounarisnia.latte.gametest.CoffeeMachineTests;
-import com.lounarisnia.latte.stations.ScaleStation;
+import com.lounarisnia.latte.stations.scale.ScaleStation;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Blocks;

@@ -1,4 +1,4 @@
-package com.lounarisnia.latte.stations;
+package com.lounarisnia.latte.stations.scale;
 
 import com.lounarisnia.latte.Latte;
 import com.pockyl.diegesis.api.client.StationBehavior;
@@ -11,7 +11,6 @@ import org.lwjgl.glfw.GLFW;
 
 public final class ScaleBehavior implements StationBehavior {
   private final Vector3f offset = new Vector3f();
-  private final Vector3f lastPoint = new Vector3f();
 
   public ScaleBehavior(StationView stationView) {}
 
@@ -22,6 +21,7 @@ public final class ScaleBehavior implements StationBehavior {
 
   private float tiltTime = -1;
 
+  // FIXME: if you place bean pack then swap it with something else, you can pour it
   @Override
   public void onEvent(StationView view, SceneEvent event) {
     if (event instanceof SceneEvent.Click click && "bean_pack_action".equals(click.node())) {
@@ -36,6 +36,7 @@ public final class ScaleBehavior implements StationBehavior {
     }
   }
 
+  // TODO: Bean dropping physics, particle won't work, needs manual simulation
   @Override
   public void frame(StationView view, float deltaSeconds) {
     if (tiltTime < 0.0f) {
@@ -44,7 +45,12 @@ public final class ScaleBehavior implements StationBehavior {
 
     tiltTime += deltaSeconds;
     if (tiltTime >= 0.1f) {
-      view.node("bean_pack").ifPresent(beanPack -> beanPack.rotateTo(0.0f, 0.0f, -30.0f, 0.2f));
+      view.node("bean_pack")
+          .ifPresent(
+              beanPack -> {
+                view.sendAction("pour_bean", new CompoundTag());
+                beanPack.rotateTo(0.0f, 0.0f, -30.0f, 0.2f);
+              });
       tiltTime = -1;
     }
   }

@@ -27,6 +27,21 @@
         1.9,
         8
       ],
+      "tank": {
+        "tank": "cup_receiver",
+        "inner": {
+          "from": [
+            -2,
+            0.3,
+            -1
+          ],
+          "to": [
+            2,
+            4.8,
+            3
+          ]
+        }
+      },
       "visual": {
         "model": "latte:diegesis/measuring_cup_block"
       }
@@ -48,10 +63,22 @@
       "children": [
         {
           "id": "bean_pack_action",
-          "pos": [0, 0, 0],
+          "pos": [
+            0,
+            0,
+            0
+          ],
           "collider": {
-            "from": [-4.05, -0.05, -4.05],
-            "to": [4.05, 8.05, 4.05]
+            "from": [
+              -4.05,
+              -0.05,
+              -4.05
+            ],
+            "to": [
+              4.05,
+              8.05,
+              4.05
+            ]
           },
           "hidden": true
         }

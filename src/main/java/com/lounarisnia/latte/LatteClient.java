@@ -1,7 +1,7 @@
 package com.lounarisnia.latte;
 
-import com.lounarisnia.latte.stations.ScaleBehavior;
-import com.lounarisnia.latte.stations.ScaleStation;
+import com.lounarisnia.latte.stations.scale.ScaleBehavior;
+import com.lounarisnia.latte.stations.scale.ScaleStation;
 import com.pockyl.diegesis.api.client.DiegesisClient;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
