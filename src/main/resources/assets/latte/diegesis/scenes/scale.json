@@ -15,36 +15,47 @@
     "fov": 60
   },
   "interface": {
-    "inventory_panel": false
+    "inventory_panel": true
   },
   "nodes": [
     {
       "id": "measuring_cup",
-      "pickable": true,
+      "pickable": false,
       "strokes": false,
-      "grabbable": {
-        "lift": 3
-      },
       "pos": [
         8,
         1.9,
         8
       ],
-      "collider": {
-        "from": [
-          -2.3,
-          0,
-          -1.3
-        ],
-        "to": [
-          2.3,
-          5,
-          3.3
-        ]
-      },
       "visual": {
         "model": "latte:diegesis/measuring_cup_block"
       }
+    },
+    {
+      "id": "bean_pack",
+      "pos": [
+        3,
+        10,
+        8
+      ],
+      "slot": {
+        "slot": "bean_pack[0]",
+        "size": 8,
+        "display": "upright",
+        "counts": "hover",
+        "highlight": true
+      },
+      "children": [
+        {
+          "id": "bean_pack_action",
+          "pos": [0, 0, 0],
+          "collider": {
+            "from": [-4.05, -0.05, -4.05],
+            "to": [4.05, 8.05, 4.05]
+          },
+          "hidden": true
+        }
+      ]
     }
   ]
 }

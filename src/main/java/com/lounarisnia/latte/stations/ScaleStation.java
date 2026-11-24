@@ -18,12 +18,17 @@ public class ScaleStation {
 
   public static StationSchema schema() {
     return StationSchema.builder()
+        .slots("bean_pack", 1)
         .control("foobar", ControlSpec.stepped(-1.0f, 1.0f, 64, 0.0f))
         .build();
   }
 
   public static StationType type() {
-    return Diegesis.station(ID).block(LatteBlocks.SCALE_BLOCK).schema(schema()).build();
+    return Diegesis.station(ID)
+        .block(LatteBlocks.SCALE_BLOCK)
+        .schema(schema())
+        .logic(ScaleLogic::new)
+        .build();
   }
 
   public static void register() {

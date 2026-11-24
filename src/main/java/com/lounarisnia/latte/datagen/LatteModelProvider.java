@@ -53,7 +53,8 @@ public class LatteModelProvider extends ModelProvider {
 
     itemModels.generateFlatItem(LatteItems.COFFEE_BEAN_ITEM.get(), ModelTemplates.FLAT_ITEM);
 
-    itemModels.generateFlatItem(LatteItems.COFFEE_PACKAGE_ITEM.get(), ModelTemplates.FLAT_ITEM);
+    blockModels.registerSimpleItemModel(
+        LatteItems.COFFEE_PACKAGE_ITEM.get(), this.modLocation("diegesis/coffee_package"));
 
     blockModels.registerSimpleItemModel(
         LatteItems.MEASURING_CUP_ITEM.get(), this.modLocation("block/measuring_cup_block"));
