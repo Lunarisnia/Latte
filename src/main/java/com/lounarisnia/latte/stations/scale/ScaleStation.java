@@ -8,7 +8,8 @@ import com.pockyl.diegesis.api.state.TankSpec;
 import com.pockyl.diegesis.api.station.StationType;
 import net.minecraft.resources.Identifier;
 
-// TODO: Should probably be combined with the scales
+// TODO: set measuring cup to be placed on a slot instead
+// TODO: allow taking the the cup with the amount of coffee bean still tracked inside the inventory
 public class ScaleStation {
   public static final Identifier ID = Identifier.fromNamespaceAndPath(Latte.MODID, "scale");
 
