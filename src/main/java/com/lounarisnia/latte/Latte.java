@@ -1,7 +1,7 @@
 package com.lounarisnia.latte;
 
 import com.lounarisnia.latte.gametest.CoffeeMachineTests;
-import com.lounarisnia.latte.stations.MeasuringCupStation;
+import com.lounarisnia.latte.stations.ScaleStation;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Blocks;
@@ -37,7 +37,7 @@ public class Latte {
     LatteItems.register(modEventBus);
     // Register the Deferred Register to the mod event bus so tabs get registered
     LatteTab.register(modEventBus);
-    MeasuringCupStation.register();
+    ScaleStation.register();
 
     // Register ourselves for server and other game events we are interested in.
     // Note that this is necessary if and only if we want *this* class (Latte) to respond directly

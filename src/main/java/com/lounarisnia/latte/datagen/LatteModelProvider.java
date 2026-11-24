@@ -43,6 +43,12 @@ public class LatteModelProvider extends ModelProvider {
         MultiVariantGenerator.dispatch(
             measuringCupBlock, BlockModelGenerators.variant(measuringCupVariant)));
 
+    Block scaleBlock = LatteBlocks.SCALE_BLOCK.get();
+    Variant scaleVariant = new Variant(this.modLocation("diegesis/scale/scale_body"));
+
+    blockModels.blockStateOutput.accept(
+        MultiVariantGenerator.dispatch(scaleBlock, BlockModelGenerators.variant(scaleVariant)));
+
     itemModels.generateFlatItem(LatteItems.CAFE_LATTE_ITEM.get(), ModelTemplates.FLAT_ITEM);
 
     itemModels.generateFlatItem(LatteItems.COFFEE_BEAN_ITEM.get(), ModelTemplates.FLAT_ITEM);
@@ -51,5 +57,8 @@ public class LatteModelProvider extends ModelProvider {
 
     blockModels.registerSimpleItemModel(
         LatteItems.MEASURING_CUP_ITEM.get(), this.modLocation("block/measuring_cup_block"));
+
+    blockModels.registerSimpleItemModel(
+        LatteItems.SCALE_BLOCK_ITEM.get(), this.modLocation("diegesis/scale/scale_body"));
   }
 }

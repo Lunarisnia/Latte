@@ -2,6 +2,7 @@ package com.lounarisnia.latte;
 
 import com.lounarisnia.latte.beans.CoffeeBeanItem;
 import com.lounarisnia.latte.beans.CoffeePackageItem;
+import com.lounarisnia.latte.blocks.ScaleBlockItem;
 import com.lounarisnia.latte.drinks.CafeLatteItem;
 import com.lounarisnia.latte.machines.CoffeeMachineItem;
 import com.lounarisnia.latte.tools.*;
@@ -31,6 +32,11 @@ public final class LatteItems {
 
   public static DeferredItem<CoffeePackageItem> COFFEE_PACKAGE_ITEM =
       ITEMS.registerItem("coffee_package_item", CoffeePackageItem::new);
+
+  public static final DeferredItem<ScaleBlockItem> SCALE_BLOCK_ITEM =
+      ITEMS.registerItem(
+          "scale_block_item",
+          properties -> new ScaleBlockItem(LatteBlocks.SCALE_BLOCK.get(), properties));
 
   public static void register(IEventBus modEventBus) {
     ITEMS.register(modEventBus);

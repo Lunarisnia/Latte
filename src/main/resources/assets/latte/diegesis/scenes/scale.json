@@ -1,9 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/Pocky-l/diegesis/main/docs/schema/scene.schema.json",
+  "work_plane": 8,
   "camera": {
     "position": [
       8,
-      40,
+      20,
       -21
     ],
     "target": [
@@ -21,9 +22,12 @@
       "id": "measuring_cup",
       "pickable": true,
       "strokes": false,
+      "grabbable": {
+        "lift": 3
+      },
       "pos": [
         8,
-        0,
+        1.9,
         8
       ],
       "collider": {

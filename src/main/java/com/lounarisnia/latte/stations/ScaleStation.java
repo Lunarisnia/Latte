@@ -9,12 +9,12 @@ import com.pockyl.diegesis.api.station.StationType;
 import net.minecraft.resources.Identifier;
 
 // TODO: Should probably be combined with the scales
-public class MeasuringCupStation {
-  public static final Identifier ID = Identifier.fromNamespaceAndPath(Latte.MODID, "measuring_cup");
+public class ScaleStation {
+  public static final Identifier ID = Identifier.fromNamespaceAndPath(Latte.MODID, "scale");
 
   public static StationType STATION_TYPE = type();
 
-  private MeasuringCupStation() {}
+  private ScaleStation() {}
 
   public static StationSchema schema() {
     return StationSchema.builder()
@@ -23,11 +23,7 @@ public class MeasuringCupStation {
   }
 
   public static StationType type() {
-    return Diegesis.station(ID)
-        .block(LatteBlocks.MEASURING_CUP_BLOCK)
-        .schema(schema())
-        .hidesBlock()
-        .build();
+    return Diegesis.station(ID).block(LatteBlocks.SCALE_BLOCK).schema(schema()).build();
   }
 
   public static void register() {

@@ -1,19 +1,17 @@
 package com.lounarisnia.latte.stations;
 
-import com.lounarisnia.latte.Latte;
 import com.pockyl.diegesis.api.client.StationBehavior;
 import com.pockyl.diegesis.api.client.StationView;
 import com.pockyl.diegesis.api.event.SceneEvent;
-import net.minecraft.world.item.ItemStack;
 import org.joml.Vector3f;
 
 // TODO: experiment more into this interface
 // TODO: try using the grabbable type
-public final class MeasuringCupBehavior implements StationBehavior {
+public final class ScaleBehavior implements StationBehavior {
   private final Vector3f offset = new Vector3f();
   private final Vector3f lastPoint = new Vector3f();
 
-  public MeasuringCupBehavior(StationView stationView) {}
+  public ScaleBehavior(StationView stationView) {}
 
   @Override
   public void onSceneReady(StationView view) {
@@ -21,16 +19,8 @@ public final class MeasuringCupBehavior implements StationBehavior {
   }
 
   @Override
-  public boolean onItemClick(
-      StationView view, String node, ItemStack stack, int button, boolean shift) {
-    return StationBehavior.super.onItemClick(view, node, stack, button, shift);
-  }
-
-  @Override
   public void onEvent(StationView view, SceneEvent event) {
-    if (event instanceof SceneEvent.Click click && click.node().equals("measuring_cup")) {
-      Latte.LOGGER.debug("CLICKED");
-    }
+    if (event instanceof SceneEvent.Grab grab) {}
     // if (!(event instanceof SceneEvent.Stroke stroke)
     //     || !"measuring_cup".equals(stroke.node())
     //     || stroke.button() != GLFW.GLFW_MOUSE_BUTTON_LEFT) {
